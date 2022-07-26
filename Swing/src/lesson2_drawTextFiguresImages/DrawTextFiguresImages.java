@@ -3,6 +3,7 @@ package lesson2_drawTextFiguresImages;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,6 +23,7 @@ public class DrawTextFiguresImages {
             paintEllipse();
             paintFullRedRectangle();
             paintImageGoogle();
+            paintLine();
         }
         private void paintText (){
             Font font = new Font("Arial", Font.BOLD,25);
@@ -31,6 +33,10 @@ public class DrawTextFiguresImages {
         private void paintEllipse (){
             Ellipse2D ellipse2D = new Ellipse2D.Double(80, 60, 90, 130);
             painter.draw(ellipse2D);
+        }
+        private void paintLine (){
+            Line2D line = new Line2D.Double(0, 5, 500, 5);
+            painter.draw(line);
         }
         private void paintFullRedRectangle (){
             Rectangle2D rectangle2D = new Rectangle2D.Double(180, 60, 90, 80);
