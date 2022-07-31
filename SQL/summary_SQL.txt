@@ -105,6 +105,22 @@ UPDATE book, supply
        book.price = (book.price + supply.price)/2
  WHERE book.title = supply.title AND book.author = supply.author;
 
+***
+
+Task 1.5-9
+
+Удалить из таблицы supply книги тех авторов, общее
+количество экземпляров книг которых в таблице book превышает 10.
+
+My code
+
+DELETE FROM supply
+  WHERE author IN (
+       SELECT author FROM book
+     GROUP BY author
+       HAVING SUM(amount) > 10
+  );
+
 
 
 
