@@ -90,3 +90,16 @@ FROM trip
 WHERE city NOT IN ("Москва","Санкт-Петербург")
 ORDER BY Длительность DESC, city DESC;
 
+***
+
+Task 1.6-7
+
+Вывести информацию о командировках сотрудника(ов), которые были самыми
+короткими по времени. В результат включить столбцы name, city, date_first, date_last.
+
+My code
+
+SELECT name, city, date_first, date_last FROM trip
+ WHERE DATEDIFF(date_last, date_first) =
+(SELECT MIN(DATEDIFF(date_last, date_first)) FROM trip)
+
