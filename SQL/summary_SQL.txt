@@ -1,5 +1,0 @@
-/* Tasks about SQL and my solutions.
-The cours "Интерактивный тренажер по SQL" from Stepic */
-
-
-
