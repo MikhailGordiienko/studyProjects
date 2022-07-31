@@ -31,3 +31,17 @@ FROM trip
 WHERE name LIKE "%а %"
 ORDER BY date_last DESC;
 
+***
+
+Task 1.6-3
+
+Вывести в алфавитном порядке фамилии и инициалы тех сотрудников,
+которые были в командировке в Москве.
+
+My code
+
+Select name FROM trip
+WHERE city = "Москва"
+GROUP BY name
+ORDER BY name;
+
