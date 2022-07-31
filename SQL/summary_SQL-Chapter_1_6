@@ -117,4 +117,17 @@ SELECT name, city, date_first, date_last FROM trip
 WHERE MONTH(date_first) = MONTH(date_last)
 ORDER BY city, name;
 
+Task 1.6-9
 
+Вывести название месяца и количество командировок для каждого месяца.
+Считаем, что командировка относится к некоторому месяцу, если она началась
+в этом месяце. Информацию вывести сначала в отсортированном по убыванию
+количества, а потом в алфавитном порядке по названию месяца виде.
+Название столбцов – Месяц и Количество.
+
+My code
+
+SELECT MONTHNAME(date_first) AS Месяц, COUNT(name) AS Количество
+FROM trip
+GROUP BY MONTHNAME(date_first)
+ORDER BY COUNT(NAME) DESC, MONTHNAME(date_first);
