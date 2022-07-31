@@ -1,4 +1,4 @@
-/* Tasks about SQL and my solutions.
+/* Tasks about SQL chapter 1.5 and my solutions.
 The cours "Интерактивный тренажер по SQL" from Stepic */
 
 task tables:
