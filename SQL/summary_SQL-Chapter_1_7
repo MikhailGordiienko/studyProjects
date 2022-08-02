@@ -63,3 +63,17 @@ UPDATE fine f
 SET sum_fine = (SELECT sum_fine FROM traffic_violation
                    WHERE f.violation = traffic_violation.violation)
 WHERE sum_fine IS NULL;
+
+***
+
+Task 1.7-4
+
+Вывести фамилию, номер машины и нарушение только для тех водителей,
+которые на одной машине нарушили одно и то же правило   два и более раз.
+При этом учитывать все нарушения, независимо от того оплачены они или нет.
+
+My code
+
+SELECT name, number_plate, violation FROM fine
+GROUP BY name, number_plate, violation
+HAVING COUNT(*) > 1
