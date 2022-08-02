@@ -1,0 +1,3 @@
+/* Tasks about SQL chapter 2.1 and my solutions.
+The course "Интерактивный тренажер по SQL" from Stepic */
+
