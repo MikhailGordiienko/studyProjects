@@ -97,3 +97,32 @@ WHERE fine.name = last_table.name
   AND fine.number_plate = last_table.number_plate
   AND fine.violation = last_table.violation
   AND date_payment IS NULL;
+
+***
+
+Task 1.7-6
+
+в таблицу fine занести дату оплаты соответствующего штрафа из таблицы payment;
+уменьшить начисленный штраф в таблице fine в два раза  (только для тех штрафов,
+информация о которых занесена в таблицу payment) , если оплата произведена не позднее
+20 дней со дня нарушения.
+
+My code
+
+UPDATE fine, payment
+SET fine.date_payment = payment.date_payment,
+    fine.sum_fine = IF (
+        (DATEDIFF(payment.date_payment,fine.date_violation)) <= 20,
+        fine.sum_fine/2,
+        fine.sum_fine
+    )
+WHERE
+    fine.name = payment.name
+AND
+    fine.violation = payment.violation
+AND
+    fine.number_plate = payment.number_plate
+AND
+    fine.date_payment is NULL;
+SELECT * FROM fine
+
