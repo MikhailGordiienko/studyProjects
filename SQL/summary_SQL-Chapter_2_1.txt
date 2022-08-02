@@ -1,3 +1,24 @@
 /* Tasks about SQL chapter 2.1 and my solutions.
 The course "Интерактивный тренажер по SQL" from Stepic */
 
+Task '2.1-1'-'2.1-4'
+
+linked table theory
+
+***
+
+Task 2.1-5
+
+Создать таблицу author следующей структуры:
+
+Поле	     Тип, описание
+author_id	 INT PRIMARY KEY AUTO_INCREMENT
+name_author	 VARCHAR(50)
+
+My code
+
+CREATE TABLE author (
+    author_id	INT PRIMARY KEY AUTO_INCREMENT,
+    name_author	VARCHAR(50)
+);
+
