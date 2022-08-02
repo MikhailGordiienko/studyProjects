@@ -77,3 +77,23 @@ My code
 SELECT name, number_plate, violation FROM fine
 GROUP BY name, number_plate, violation
 HAVING COUNT(*) > 1
+
+***
+
+task 1.7-5
+
+В таблице fine увеличить в два раза сумму неоплаченных штрафов
+для отобранных на предыдущем шаге записей.
+
+My code
+
+UPDATE fine, (
+    SELECT name, number_plate, violation FROM fine
+    GROUP BY name, number_plate, violation
+    HAVING COUNT(*) > 1
+) AS last_table
+SET fine.sum_fine = fine.sum_fine * 2
+WHERE fine.name = last_table.name
+  AND fine.number_plate = last_table.number_plate
+  AND fine.violation = last_table.violation
+  AND date_payment IS NULL;
