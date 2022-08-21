@@ -44,3 +44,17 @@ ORDER BY price DESC;
 
 ***
 
+Task 2.2-2
+
+Вывести все жанры, которые не представлены в книгах на складе.
+
+My code
+
+SELECT name_genre FROM genre
+WHERE name_genre NOT IN (
+SELECT name_genre
+FROM book INNER JOIN genre
+    ON book.genre_id = genre.genre_id
+GROUP BY name_genre);
+
+***
