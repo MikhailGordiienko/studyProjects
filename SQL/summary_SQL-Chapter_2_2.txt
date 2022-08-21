@@ -58,3 +58,33 @@ FROM book INNER JOIN genre
 GROUP BY name_genre);
 
 ***
+
+Task 2.2-3
+
+Есть список городов, хранящийся в таблице city:
+
+city_id	name_city
+1	Москва
+2	Санкт-Петербург
+3	Владивосток
+Необходимо в каждом городе провести выставку книг каждого автора в течение 2020 года.
+Дату проведения выставки выбрать случайным образом. Создать запрос, который выведет
+город, автора и дату проведения выставки. Последний столбец назвать Дата. Информацию
+вывести, отсортировав сначала в алфавитном порядке по названиям городов, а потом по
+убыванию дат проведения выставок.
+
+My code
+
+SELECT name_city, name_author,
+DATE_FORMAT( FROM_UNIXTIME(RAND()*(1609372800 - 1577836800) + 1577836800) , '%d %M %Y' ) AS Дата
+FROM city, author
+ORDER BY name_city, Дата DESC
+
+(Note: to get a random date, you need to use queries
+    SELECT FROM_UNIXTIME(RAND() * (DateEnd - DateStart) + DateStart)
+ Where DateEnd end DateStart you can get like
+    SELECT
+        UNIX_TIMESTAMP('2011-01-01') AS START, // 2011-01-01, 2011-12-31 for example
+        UNIX_TIMESTAMP('2011-12-31') AS END;
+ )
+
