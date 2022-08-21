@@ -1,0 +1,46 @@
+/* Tasks about SQL chapter 2.2 and my solutions.
+The course "Интерактивный тренажер по SQL" from Stepic */
+
+Info about tables used:
+    table-1)
+      name:
+        genre
+      columns:
+        genre_id (Primary key)
+        name_genre
+
+    table-2)
+      name:
+        author
+      columns:
+        author_id (Primary key)
+        name_author
+
+    table-3)
+      name:
+        book
+      columns:
+        book_id (Primary key)
+        title
+        author_id (Foreign key from "author")
+        genre_id (Foreign key from "genre")
+        price
+        amount
+
+
+Task 2.2-1
+
+Вывести название, жанр и цену тех книг, количество которых больше 8,
+в отсортированном по убыванию цены виде.
+
+My code
+
+SELECT title, name_genre, price
+FROM
+    book INNER JOIN genre
+    ON book.genre_id = genre.genre_id
+WHERE amount > 8
+ORDER BY price DESC;
+
+***
+
