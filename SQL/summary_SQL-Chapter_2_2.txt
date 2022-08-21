@@ -87,4 +87,14 @@ ORDER BY name_city, Дата DESC
         UNIX_TIMESTAMP('2011-01-01') AS START, // 2011-01-01, 2011-12-31 for example
         UNIX_TIMESTAMP('2011-12-31') AS END;
  )
+ __________________________________________________________________
+
+ Another solution
+
+ SELECT name_city, name_author,
+ DATE_ADD("2020-01-01", INTERVAL (FLOOR(RAND() * 365)) DAY) AS Дата
+ FROM city, author
+ ORDER BY name_city, Дата DESC
+
+***
 
