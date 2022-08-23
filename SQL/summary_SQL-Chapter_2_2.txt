@@ -121,7 +121,7 @@ Task 2.2-5
 Вывести тех авторов,  количество книг которых меньше 10, в отсортированном
 по возрастанию количества виде. Последний столбец назвать Количество.
 
-My code (var 1)
+My code (option 1)
 
 SELECT name_author, SUM(amount) AS Количество
 FROM
@@ -131,7 +131,7 @@ GROUP BY name_author
 HAVING Количество < 10 OR Количество IS NULL
 ORDER BY Количество
 
-My code (var 2)
+My code (option 2)
 
 SELECT name_author, IF(SUM(amount) IS NULL, 0, SUM(amount)) AS Количество
 FROM
@@ -142,3 +142,23 @@ HAVING Количество < 10
 ORDER BY Количество
 
 ***
+
+Task 2.2-6
+
+Вывести в алфавитном порядке всех авторов, которые пишут только в одном жанре.
+Поскольку у нас в таблицах так занесены данные, что у каждого автора книги только
+в одном жанре,  для этого запроса внесем изменения в таблицу book. Пусть у нас
+книга Есенина «Черный человек» относится к жанру «Роман», а книга Булгакова «Белая гвардия»
+к «Приключениям» (эти изменения в таблицы уже внесены).
+
+My code
+
+SELECT name_author
+FROM
+    author
+    INNER JOIN book
+    ON author.author_id = book.author_id
+    INNER JOIN genre
+    ON book.genre_id = genre.genre_id
+GROUP BY author.author_id
+HAVING COUNT(DISTINCT(name_genre)) = 1
