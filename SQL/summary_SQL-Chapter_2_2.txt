@@ -114,3 +114,31 @@ WHERE name_genre LIKE "%роман%"
 ORDER BY title
 
 ***
+
+Task 2.2-5
+
+Посчитать количество экземпляров  книг каждого автора из таблицы author.
+Вывести тех авторов,  количество книг которых меньше 10, в отсортированном
+по возрастанию количества виде. Последний столбец назвать Количество.
+
+My code (var 1)
+
+SELECT name_author, SUM(amount) AS Количество
+FROM
+    author LEFT JOIN book
+    ON author.author_id = book.author_id
+GROUP BY name_author
+HAVING Количество < 10 OR Количество IS NULL
+ORDER BY Количество
+
+My code (var 2)
+
+SELECT name_author, IF(SUM(amount) IS NULL, 0, SUM(amount)) AS Количество
+FROM
+    author LEFT JOIN book
+    ON author.author_id = book.author_id
+GROUP BY name_author
+HAVING Количество < 10
+ORDER BY Количество
+
+***
